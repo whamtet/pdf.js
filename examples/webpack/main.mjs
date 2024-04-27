@@ -5,7 +5,7 @@
 
 import * as pdfjsLib from "pdfjs-dist";
 
-const pdfPath = "../learning/helloworld.pdf";
+const pdfPath = "../learning/sample.pdf";
 
 // Setting worker path to worker bundle.
 pdfjsLib.GlobalWorkerOptions.workerSrc =

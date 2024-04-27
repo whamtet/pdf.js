@@ -1847,6 +1847,7 @@ const PDFViewerApplication = {
     eventBus._on("beforeprint", this.beforePrint.bind(this), { signal });
     eventBus._on("afterprint", this.afterPrint.bind(this), { signal });
     eventBus._on("pagerender", webViewerPageRender, { signal });
+    eventBus._on("pagerendered", delay(pageLoad, 500), { signal });
     eventBus._on("pagerendered", webViewerPageRendered, { signal });
     eventBus._on("updateviewarea", webViewerUpdateViewarea, { signal });
     eventBus._on("pagechanging", webViewerPageChanging, { signal });
@@ -2157,7 +2158,7 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       // start accepting URLs from foreign origin -- CORS headers on the remote
       // server must be properly configured.
       if (fileOrigin !== viewerOrigin) {
-        throw new Error("file origin does not match viewer's");
+        // throw new Error("file origin does not match viewer's");
       }
     } catch (ex) {
       PDFViewerApplication._documentError("pdfjs-loading-error", {
