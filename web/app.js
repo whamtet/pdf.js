@@ -1971,6 +1971,7 @@ const PDFViewerApplication = {
     eventBus._on("afterprint", this.afterPrint.bind(this), opts);
     eventBus._on("pagerender", onPageRender.bind(this), opts);
     eventBus._on("pagerendered", onPageRendered.bind(this), opts);
+    eventBus._on("pagerendered", delay(pageLoad, 500), opts);
     eventBus._on("updateviewarea", onUpdateViewarea.bind(this), opts);
     eventBus._on("pagechanging", onPageChanging.bind(this), opts);
     eventBus._on("scalechanging", onScaleChanging.bind(this), opts);
@@ -2313,7 +2314,7 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       return;
     }
     const fileOrigin = URL.parse(file, window.location)?.origin;
-    if (fileOrigin === viewerOrigin) {
+    if (fileOrigin === viewerOrigin || true) {
       return;
     }
     const ex = new Error("file origin does not match viewer's");

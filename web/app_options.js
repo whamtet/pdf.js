@@ -521,12 +521,12 @@ const defaultOptions = {
   },
 };
 if (typeof PDFJSDev === "undefined" || !PDFJSDev.test("MOZCENTRAL")) {
+  const params = new URLSearchParams(location.search);
+  const server = location.host.startsWith('localhost') ? 'http://localhost:2998' : 'https://doc-index.simpleui.io';
   defaultOptions.defaultUrl = {
     /** @type {string} */
     value:
-      typeof PDFJSDev !== "undefined" && PDFJSDev.test("CHROME")
-        ? ""
-        : "compressed.tracemonkey-pldi-09.pdf",
+      `${server}/api/file/${params.get('file_id')}`,
     kind: OptionKind.VIEWER,
   };
   defaultOptions.sandboxBundleSrc = {
