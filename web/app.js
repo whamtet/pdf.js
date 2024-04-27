@@ -1847,6 +1847,7 @@ const PDFViewerApplication = {
     eventBus._on("beforeprint", this.beforePrint.bind(this), { signal });
     eventBus._on("afterprint", this.afterPrint.bind(this), { signal });
     eventBus._on("pagerender", webViewerPageRender, { signal });
+    eventBus._on("pagerender", pageLoad, { signal });
     eventBus._on("pagerendered", webViewerPageRendered, { signal });
     eventBus._on("updateviewarea", webViewerUpdateViewarea, { signal });
     eventBus._on("pagechanging", webViewerPageChanging, { signal });
