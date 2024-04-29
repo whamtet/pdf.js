@@ -32,8 +32,22 @@ const pageLoad = () => {
     if (params.has('page')) {
       PDFViewerApplication.page = Number(params.get('page'));
     }
+    htmx.trigger('#inset', 'click');
   }
   for (const span of $$('span[role=presentation]')) {
     span.onclick = onClick;
   }
 }
+
+const updateAttribute = (el, k, f) => el.setAttribute(k, f(el.getAttribute(k)));
+
+// main
+updateAttribute($('#inset'), 'hx-get', x => {
+  if (location.host.startsWith('localhost')) {
+    return x;
+  } else {
+    return x.replace('http://localhost:3000', 'https://app.simplifydd.com');
+  }
+});
+
+
