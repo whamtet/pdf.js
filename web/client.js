@@ -24,7 +24,15 @@ const onClick = e => {
   htmx.ajax('POST', 'http://localhost:3000/pdf-viewer/inset', {values, target: '#inset'});
 };
 
+let virgin = true;
 const pageLoad = () => {
+  if (virgin) {
+    virgin = false;
+    const params = new URLSearchParams(location.search);
+    if (params.has('page')) {
+      PDFViewerApplication.page = Number(params.get('page'));
+    }
+  }
   for (const span of $$('span[role=presentation]')) {
     span.onclick = onClick;
   }
