@@ -10,6 +10,8 @@ const hideModal = e => {
   }
 }
 
+const server = location.host.startsWith('localhost') ? 'http://localhost:3000' : 'https://app.simplifydd.com';
+
 // clicking pdf elements
 const onClick = e => {
   const span = e.target.parentElement;
@@ -21,7 +23,7 @@ const onClick = e => {
     command: 'add'
   };
 
-  htmx.ajax('POST', 'http://localhost:3000/pdf-viewer/inset', {values, target: '#inset'});
+  htmx.ajax('POST', server + '/pdf-viewer/inset', {values, target: '#inset'});
 };
 
 let virgin = true;
