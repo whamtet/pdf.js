@@ -12,8 +12,16 @@ const hideModal = e => {
 
 // clicking pdf elements
 const onClick = e => {
-  const span = e.target;
-  console.log('span', span);
+  const span = e.target.parentElement;
+  console.log('clicked', span);
+  const values = {
+    fragment: span.innerText.trim(),
+    fragmentId: span.id,
+    page: PDFViewerApplication.page,
+    command: 'add'
+  };
+
+  htmx.ajax('POST', 'http://localhost:3000/pdf-viewer/inset', {values, target: '#inset'});
 };
 
 const pageLoad = () => {
