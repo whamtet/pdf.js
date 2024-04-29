@@ -42,6 +42,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--<link rel="localization" href="toolkit/pdfviewer/viewer.ftl"/>-->
 <!--#else-->
     <link rel="stylesheet" href="viewer.css">
+    <link rel="stylesheet" href="tailwind.css">
 <!--#endif-->
 
 <!--#if MOZCENTRAL-->
@@ -571,17 +572,29 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
-    <div style="position: fixed;
+
+    <!-- matt's code -->
+    <div class="p-2"
+      style="position: fixed;
 top: 50px;
 right: 100px;
 width: 400px;
 height: 300px;
 background-color: white;
 border: 1px solid lightgray;">
-      <h2 id="question-title"
-      style="text-align: center;"></h2>
+      <h3 class="text-center"
+        id="question-title"></h3>
     </div>
-  <script src="client.js">
-  </script>
+
+    <div id="modal"
+         class="hidden fixed left-0 top-0 w-full h-full"
+         style="background-color: rgba(0, 0, 0, 0.4); z-index: 10000"
+         onclick="hideModal(event)"
+    >
+      <div class="mx-auto border rounded-lg bg-white w-2/3 p-2"
+      style="max-height: 94vh; margin-top: 3vh; margin-bottom: 3vh;">Hello friends!</div>
+    </div>
+    <script src="client.js"></script>
+    <script src="modal.js"></script>
   </body>
 </html>
