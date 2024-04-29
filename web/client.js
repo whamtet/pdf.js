@@ -2,15 +2,15 @@ const $ = x => document.querySelector(x);
 const $$ = x => document.querySelectorAll(x);
 const $id = x => document.getElementById(x);
 
-const loadInfo = async () => {
-  const [_, question_id] = location.href.split('=');
-  const response = await fetch(`http://localhost:3000/api/question/${question_id}`);
+htmx.config.defaultSwapStyle = 'outerHTML';
 
-  const {question} = await response.json();
-  $id('question-title').innerHTML = question;
+const hideModal = e => {
+  if (e.target.id === 'modal') {
+    $('#modal').classList.add('hidden');
+  }
 }
-loadInfo();
 
+// clicking pdf elements
 const onClick = e => {
   const span = e.target;
   console.log('span', span);
