@@ -33,6 +33,9 @@ const onClickText = async e => {
     body: JSON.stringify(values)
   });
   if (response.status === 200) {
+    if (opener) {
+      opener.postMessage('refresh');
+    }
     window.close();
   }
 };
