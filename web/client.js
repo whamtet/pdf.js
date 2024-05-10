@@ -21,7 +21,8 @@ const onClickText = async e => {
     fragment: span.innerText.trim(),
     fragmentId: span.id,
     page: PDFViewerApplication.page,
-    offset: params.get('offset')
+    offset: params.get('offset'),
+    file_id: params.get('file_id'),
   };
 
   const url = `${server}/api/question/${params.get('question_id')}/reference`;
