@@ -19,8 +19,8 @@ const onClickText = async e => {
   const params = new URLSearchParams(location.search);
   const values = {
     fragment: span.innerText.trim(),
-    fragmentId: span.id,
-    page: PDFViewerApplication.page,
+    y: getY(span),
+    page: PDFViewerApplication.page - 1,
     offset: params.get('offset'),
     file_id: params.get('file_id'),
   };
