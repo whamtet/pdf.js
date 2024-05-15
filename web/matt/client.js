@@ -12,14 +12,14 @@ const hideModal = e => {
 const server = location.host.startsWith('localhost') ? 'http://localhost:3000' : 'https://app.simplifydd.com';
 
 // clicking pdf elements
-const onClickText = async e => {
+const onClickPresentationSpan = async e => {
   const span = e.target.parentElement;
   console.log('clicked', span);
+
 
   const params = new URLSearchParams(location.search);
   const values = {
     fragment: span.innerText.trim(),
-    y: getY(span),
     page: PDFViewerApplication.page - 1,
     offset: params.get('offset'),
     file_id: params.get('file_id'),
@@ -56,12 +56,12 @@ const pageLoad = () => {
     if (params.has('q')) {
       find(params.get('q'));
     } else if (params.has('page')) {
-      PDFViewerApplication.page = Number(params.get('page'));
+      PDFViewerApplication.page = Number(params.get('page')) + 1;
     }
     // htmx.trigger('#inset', 'click');
   }
   for (const span of $$('span[role=presentation]')) {
-    span.onclick = onClickText;
+    span.onclick = onClickPresentationSpan;
   }
 }
 
