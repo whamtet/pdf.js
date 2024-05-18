@@ -56,6 +56,8 @@ const pageLoad = () => {
       find(params.get('q'));
     } else if (params.has('page')) {
       PDFViewerApplication.page = Number(params.get('page')) + 1;
+    } else if (params.has('migrate')) {
+      $('#inset').click();
     }
   }
   for (const span of $$('span[role=presentation]')) {
