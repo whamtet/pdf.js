@@ -24,25 +24,9 @@ const onClickPresentationSpan = async e => {
     file_id: Number(params.get('file_id'))
   };
   
-  if (window.migration_offset) {
-    $('#values').value = JSON.stringify(values);
-    htmx.trigger('#values-form', 'submit');
-  } else {
-    const url = `${server}/api/question/${params.get('question_id')}/reference`;
-    const response = await fetch (url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(values)
-    });
-    if (response.status === 200) {
-      if (opener) {
-        opener.postMessage('refresh');
-      }
-      window.close();
-    }
-  }
+  $('#values').value = JSON.stringify(values);
+  htmx.trigger('#values-form', 'submit');
+  
 };
 
 const find = text => {
@@ -61,9 +45,8 @@ const pageLoad = () => {
       find(params.get('q'));
     } else if (params.has('page')) {
       PDFViewerApplication.page = Number(params.get('page')) + 1;
-    } else if (params.has('migrate')) {
-      $('#inset').click();
     }
+    $('#inset').click();
   }
   for (const span of $$('span[role=presentation]')) {
     span.onclick = onClickPresentationSpan;
@@ -80,5 +63,3 @@ updateAttribute($('#inset'), 'hx-get', x => {
     return x.replace('http://localhost:3000', 'https://app.simplifydd.com');
   }
 });
-
-
