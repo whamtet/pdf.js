@@ -20,11 +20,11 @@ const onClickPresentationSpan = async e => {
   const values = {
     fragment: span.innerText.trim(),
     page: PDFViewerApplication.page - 1,
-    offset: Number(params.get('offset')) || migration_offset,
+    offset: Number(params.get('offset')) || window.migration_offset,
     file_id: Number(params.get('file_id'))
   };
   
-  if (migration_offset) {
+  if (window.migration_offset) {
     $('#values').value = JSON.stringify(values);
     htmx.trigger('#values-form', 'submit');
   } else {
