@@ -20,23 +20,28 @@ const onClickPresentationSpan = async e => {
   const values = {
     fragment: span.innerText.trim(),
     page: PDFViewerApplication.page - 1,
-    offset: params.get('offset'),
-    file_id: params.get('file_id'),
+    offset: params.get('offset') || migration_offset,
+    file_id: params.get('file_id')
   };
-
-  const url = `${server}/api/question/${params.get('question_id')}/reference`;
-  const response = await fetch (url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(values)
-  });
-  if (response.status === 200) {
-    if (opener) {
-      opener.postMessage('refresh');
+  
+  if (migration_offset) {
+    $('#values').value = JSON.stringify(values);
+    htmx.trigger('#values-form', 'submit');
+  } else {
+    const url = `${server}/api/question/${params.get('question_id')}/reference`;
+    const response = await fetch (url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    });
+    if (response.status === 200) {
+      if (opener) {
+        opener.postMessage('refresh');
+      }
+      window.close();
     }
-    window.close();
   }
 };
 
