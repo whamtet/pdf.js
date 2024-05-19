@@ -20,8 +20,8 @@ const onClickPresentationSpan = async e => {
   const values = {
     fragment: span.innerText.trim(),
     page: PDFViewerApplication.page - 1,
-    offset: params.get('offset') || migration_offset,
-    file_id: params.get('file_id')
+    offset: Number(params.get('offset')) || migration_offset,
+    file_id: Number(params.get('file_id'))
   };
   
   if (migration_offset) {
