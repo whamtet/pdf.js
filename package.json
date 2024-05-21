@@ -63,7 +63,6 @@
     "yargs": "^17.7.2"
   },
   "scripts": {
-    "tailwind:watch": "tailwindcss -i ./tailwind/input.css -o ./web/tailwind.css --watch"
   },
   "repository": {
     "type": "git",

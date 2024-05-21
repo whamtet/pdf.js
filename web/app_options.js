@@ -375,12 +375,12 @@ const defaultOptions = {
   },
 };
 if (typeof PDFJSDev === "undefined" || !PDFJSDev.test("MOZCENTRAL")) {
+  const params = new URLSearchParams(location.search);
+  const server = location.host.startsWith('localhost') ? 'http://localhost:3000' : 'https://app.simplifydd.com';
   defaultOptions.defaultUrl = {
     /** @type {string} */
     value:
-      typeof PDFJSDev !== "undefined" && PDFJSDev.test("CHROME")
-        ? ""
-        : "sample.pdf",
+      `${server}/api/file/${params.get('file_id')}`,
     kind: OptionKind.VIEWER,
   };
   defaultOptions.sandboxBundleSrc = {
