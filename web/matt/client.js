@@ -48,9 +48,7 @@ const pageLoad = () => {
     } else if (params.has('page')) {
       PDFViewerApplication.page = Number(params.get('page')) + 1;
     }
-    if (params.has('migrate') || params.has('offset')) {
-      $('#inset').click();
-    }
+    $('#inset').click();
   }
   for (const span of $$('span[role=presentation]')) {
     span.onclick = onClickPresentationSpan;
