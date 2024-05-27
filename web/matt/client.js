@@ -24,8 +24,10 @@ const onClickPresentationSpan = async e => {
     file_id: Number(params.get('file_id'))
   };
   
-  $('#values').value = JSON.stringify(values);
-  htmx.trigger('#values-form', 'submit');
+  if ($('#values')) {
+    $('#values').value = JSON.stringify(values);
+    htmx.trigger('#values-form', 'submit');
+  }
   
 };
 
@@ -46,7 +48,9 @@ const pageLoad = () => {
     } else if (params.has('page')) {
       PDFViewerApplication.page = Number(params.get('page')) + 1;
     }
-    $('#inset').click();
+    if (params.has('migrate') || params.has('offset')) {
+      $('#inset').click();
+    }
   }
   for (const span of $$('span[role=presentation]')) {
     span.onclick = onClickPresentationSpan;
