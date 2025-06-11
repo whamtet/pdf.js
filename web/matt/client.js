@@ -9,7 +9,7 @@ const hideModal = e => {
   }
 }
 
-const server = location.host.startsWith('localhost') ? 'http://localhost:3000' : 'https://app.simplifydd.com';
+const server = location.host.startsWith('localhost') ? 'http://localhost:2998' : 'https://doc-index.simpleui.io';
 
 // clicking pdf elements
 const onClickPresentationSpan = async e => {
@@ -62,6 +62,6 @@ updateAttribute($('#inset'), 'hx-get', x => {
     return x;
   } else {
     // index.html contains dev values
-    return x.replace('http://localhost:3000', 'https://app.simplifydd.com');
+    return x.replace('http://localhost:2998', 'https://doc-index.simpleui.io');
   }
 });

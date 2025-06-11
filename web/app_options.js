@@ -376,7 +376,7 @@ const defaultOptions = {
 };
 if (typeof PDFJSDev === "undefined" || !PDFJSDev.test("MOZCENTRAL")) {
   const params = new URLSearchParams(location.search);
-  const server = location.host.startsWith('localhost') ? 'http://localhost:3000' : 'https://app.simplifydd.com';
+  const server = location.host.startsWith('localhost') ? 'http://localhost:2998' : 'https://doc-index.simpleui.io';
   defaultOptions.defaultUrl = {
     /** @type {string} */
     value:
