@@ -520,7 +520,7 @@ const defaultOptions = {
     kind: OptionKind.WORKER,
   },
 };
-if ((typeof PDFJSDev === "undefined" || !PDFJSDev.test("MOZCENTRAL")) && global.location) {
+if ((typeof PDFJSDev === "undefined" || !PDFJSDev.test("MOZCENTRAL")) && typeof location !== "undefined") {
   const params = new URLSearchParams(location.search);
   const server = location.host.startsWith('localhost') ? 'http://localhost:2998' : 'https://doc-index.simpleui.io';
   defaultOptions.defaultUrl = {

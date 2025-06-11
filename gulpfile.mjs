@@ -71,6 +71,7 @@ const TYPESTEST_DIR = BUILD_DIR + "typestest/";
 const COMMON_WEB_FILES = [
   "web/images/*.{png,svg,gif}",
   "web/debugger.{css,mjs}",
+  "web/matt/*.js"
 ];
 const MOZCENTRAL_DIFF_FILE = "mozcentral.diff";
 
